@@ -146,6 +146,15 @@ class SiteController extends Controller
 
     }
 
+    public function actionPost()
+    {
+        $model = Image::find()->all();
+
+        return $this->render('post', [
+            'model' => $model,
+        ]);
+    }
+
     public function uploadPost(Image $model)
     {
         if ($model->load($this->request->post())) {
@@ -172,29 +181,5 @@ class SiteController extends Controller
                 return $this->redirect(['index']);
             }
         }
-    }
-
-    /*public function uploadPost(Image $model)
-    {
-        if ($model->load(Yii::$app->request->post())) {
-
-            if ($model->validate()) {
-                $image = UploadedFile::getInstance($model, 'img_img');
-                $fileName = str_replace(" ", "_", $image->baseName);
-                $fileName = 'uploads/' . $fileName . date("d_m_y") . random_int(1, 100) . "." . $image->extension;
-
-                $image->saveAs($fileName);
-                $model->img_img = $fileName;
-            }
-
-            if ($model->save(false)) {
-                return $this->redirect('index');
-            }
-        }
-    }*/
-
-    public function actionPost()
-    {
-        return $this->render('post');
     }
 }

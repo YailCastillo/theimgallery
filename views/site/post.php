@@ -7,11 +7,11 @@ use yii\helpers\Html;
 use app\models\UserGallery;
 use PHPUnit\Framework\MockObject\Builder\Identity;
 
-$text = "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
+$text = "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
 $this->title = 'My Yii Application';
 ?>
 <body>
-    <!-- Container -->
+    <!-- Main container -->
     <div class="d-flex flex-column align-items-center container-fluid">
 
         <!-- Feed container -->
@@ -22,7 +22,7 @@ $this->title = 'My Yii Application';
             
                 <!-- IMG -->
                 <div class="me-3 d-flex justify-content-center" style="width: auto; min-height: 25rem; max-width: 25rem;">
-                    <?= Html::img($model->img_img, ['class' => 'img-fluid']) ?>
+                    <img class="img-fluid" src= "../../web/uploads/chopper_wano24_11_23_80.jpg" alt=""/>
                 </div>
 
                 <div style="max-width: 20rem">

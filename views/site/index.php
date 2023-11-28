@@ -9,8 +9,7 @@ use PHPUnit\Framework\MockObject\Builder\Identity;
 use app\models\Image;
 use Symfony\Component\Mime\Encoder\EncoderInterface;
 
-$text = "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
-$this->title = 'My Yii Application';
+$this->title = 'TheIMGallery';
 ?>
 <body>
     <!-- Container -->
@@ -51,7 +50,7 @@ $this->title = 'My Yii Application';
             <?php }?>
     </div>
 
-    <p><?= Html::a('Upload', ['upload'], ['class' => 'fixed-bottom btn btn-lg btn-secondary my-3 mx-3 rounded-4', 'style' => 'width: 8%;']) ?></p>
+    <p><?= Html::a('Upload', ['upload'], ['class' => 'fixed-bottom btn btn-lg btn-dark bg-black my-3 mx-3 rounded-4', 'style' => 'width: 8%;']) ?></p>
 
 </body>
 
