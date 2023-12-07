@@ -128,7 +128,7 @@ class Application extends \yii\base\Application
                 return $this->getRequest()->getScriptUrl();
             }
 
-            return $this->getRequest()->getBaseUrl() . '/';
+            return $this->getRequest()->getBaseUrl() . '/site/index';
         }
 
         return $this->_homeUrl;

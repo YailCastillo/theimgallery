@@ -3,6 +3,7 @@
 /** @var yii\web\View $this */
 
 use yii\helpers\Html;
+use app\models\Image;
 
 $this->title = 'Profile';
 $this->params['breadcrumbs'][] = $this->title;
@@ -12,49 +13,32 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="d-flex flex-column align-items-center container-fluid">
 
         <!-- Profile container -->
-        <div class="d-flex flex-column align-items-center py-4 px-5 container-fluid rounded-4 shadow-lg" style="height: auto; width: 50rem; background-color: #212529;">
+        <div class="d-flex flex-column align-items-center py-4 px-5 container-fluid rounded-4 shadow-lg" style="height: auto; max-width: 50rem; background-color: #212529;">
 
             <!-- Bio container -->
-            <div class="position-relative my-2 rounded-4 shadow bg-black" style="width: 45rem; height: 15rem">
-                <div class="position-absolute top-50 start-50 translate-middle container-fluid d-flex justify-content-evenly align-items-center">
-                    <div class="rounded-circle border border-4" style="width: 10rem; height: 10rem;">
-                        <img class="rounded-circle p-1" style="width: 100%; height: 100%; object-fit: cover;" src="../../images/tony_tony.png" alt="">
+            <div class="container-fluid my-2 rounded-4 shadow bg-black" style="max-width: 45rem; max-height: 15rem">
+                <div class="row row-cols-2 row-cols-lg-2 border border-white" style="height: 10rem;">
+                    <div class="m-auto">
+                        <img class="col border border-white d-flex rounded-circle p-1" style="max-width: auto; max-height: auto; object-fit: cover;" src="../../images/tony_tony.png"/>
                     </div>
-                    <div class="text-white " style="border: solid white 1px; width: 25rem; height: 8rem;">
-                        <!-- Title -->
-                        <div class="container fw-bold">
-                            <?= Html::tag('p', Html::encode(Yii::$app->user->identity->username)) ?>
-                        </div>
-                        <!-- Bio -->
-                        <div class="container">
-                            <p>asdasdasd</p>
-                        </div>
+                    <div class="col border border-white">
+                        <div class="col border border-white">Column</div>
+                        <div class="col border border-white">Column</div>
                     </div>
                 </div>
             </div>
 
             <!-- User images container -->
-            <div class="container my-2 py-4 rounded-4 shadow bg-black" style="width: auto; height: auto">
-                
+            <div class="container my-2 py-3 px-4 rounded-4 shadow bg-black" style="max-width: 40rem; max-height: auto">
+
                 <!-- Images grid -->
-                <div class="d-flex flex-wrap container">
-                    <div class="my-1 mx-1" style="width: 13rem; height: 14rem;">
-                        <img style="width: 100%; height: 100%; object-fit: cover;" src="../../images/mono.jpg" alt="mono">
-                    </div>
-                    <div class="my-1 mx-1" style="width: 13rem; height: 14rem;">
-                        <img style="width: 100%; height: 100%; object-fit: cover;" src="../../images/chopper_wano.jpg" alt="chopper">
-                    </div>
-                    <div class="my-1 mx-1" style="width: 13rem; height: 14rem;">
-                        <img style="width: 100%; height: 100%; object-fit: cover;" src="../../images/JwBunny.png" alt="chopper">
-                    </div>
-                    <div class="my-1 mx-1" style="width: 13rem; height: 14rem;">
-                        <img style="width: 100%; height: 100%; object-fit: cover;" src="../../images/leche.jpg" alt="chopper">
-                    </div>
-                    <div class="my-1 mx-1" style="width: 13rem; height: 14rem;">
-                        <img style="width: 100%; height: 100%; object-fit: cover;" src="../../images/tony_tony.png" alt="chopper">
-                    </div>
-                    <div class="my-1 mx-1" style="width: 13rem; height: 14rem;">
-                        <img style="width: 100%; height: 100%; object-fit: cover;" src="../../images/liconsa.jpg" alt="chopper">
+                <div class="container gx-1 gy-1">
+                    <div class="row">
+                        <?php foreach ($model as $post) { ?>
+                        <div class="m-auto col-4 gx-2 my-1" style="max-width: 13rem; max-height: 13rem;">
+                            <img class="rounded-1" style="width: 100%; height: 100%; object-fit: cover;" src= "../../web/<?= Html::encode($post->img_img)?>" alt="">
+                        </div>
+                        <?php } ?>
                     </div>
                 </div>
 

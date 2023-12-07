@@ -23,13 +23,14 @@ $this->title = 'TheIMGallery';
             <div class="d-flex flex-column my-2 rounded-4 shadow bg-black text-light container-fluid" style="max-width: 25rem; height: auto;">
 
                 <!-- User -->
-                <div class="lh-1 pt-2 fw-bold">
-                    <?= Html::tag('p', Html::encode(Yii::$app->user->identity->username)) ?>
+                <div class="d-flex justify-content-between lh-1 pt-2 fw-bold">
+                    <?= Html::tag('p', Html::encode($post->img_user)) ?>
+                    <?= Html::a('...', ['post', 'img_id' => $post->img_id], ['class' => 'text-decoration-none text-white td-none']) ?>
                 </div>
 
                 <!-- IMG -->
                 <div class="px-0 d-flex justify-content-center" style="width: auto; min-height: 25rem;">
-                    <img class="img-fluid" src= "../../web/<?= Html::encode($post->img_img) ?>" alt=""/>
+                    <img class="rounded-1" style="width: 100%; height: 100%; object-fit: cover;" src= "../../web/<?= Html::encode($post->img_img) ?>" alt=""/>
                 </div>
 
                 <!-- Title -->
@@ -50,7 +51,11 @@ $this->title = 'TheIMGallery';
             <?php }?>
     </div>
 
-    <p><?= Html::a('Upload', ['upload'], ['class' => 'fixed-bottom btn btn-lg btn-dark bg-black my-3 mx-3 rounded-4', 'style' => 'width: 8%;']) ?></p>
+    <?php if (!Yii::$app->user->isGuest) { ?>
+        <p><?= Html::a('Upload', ['upload'], ['class' => 'fixed-bottom btn btn-lg btn-dark bg-black my-3 mx-3 rounded-4', 'style' => 'width: 8%;']) ?></p>
+    <?php } else {
+        echo '';
+    }?>
 
 </body>
 

@@ -10,6 +10,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Image;
+use app\models\SignupForm;
+use app\models\User;
 use yii\base\Model;
 use yii\web\UploadedFile;
 
@@ -93,6 +95,18 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+            return $this->redirect('login');
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
+
     /**
      * Logout action.
      *
@@ -130,7 +144,11 @@ class SiteController extends Controller
      */
     public function actionProfile()
     {
-        return $this->render('profile');
+        $model = Image::find()->all();
+
+        return $this->render('profile', [
+            'model' => $model,
+        ]);
     }
 
     public function actionUpload()
@@ -146,12 +164,10 @@ class SiteController extends Controller
 
     }
 
-    public function actionPost()
+    public function actionPost($img_id)
     {
-        $model = Image::find()->all();
-
         return $this->render('post', [
-            'model' => $model,
+            'model' => $this->findModel($img_id),
         ]);
     }
 
@@ -181,5 +197,14 @@ class SiteController extends Controller
                 return $this->redirect(['index']);
             }
         }
+    }
+
+    protected function findModel($img_id)
+    {
+        if (($model = Image::findOne(['img_id' => $img_id])) !== null) {
+            return $model;
+        }
+
+        //throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

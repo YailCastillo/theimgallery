@@ -7,8 +7,7 @@ use yii\helpers\Html;
 use app\models\UserGallery;
 use PHPUnit\Framework\MockObject\Builder\Identity;
 
-$text = "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
-$this->title = 'My Yii Application';
+$this->title = $model->img_title;
 ?>
 <body>
     <!-- Main container -->
@@ -22,23 +21,28 @@ $this->title = 'My Yii Application';
             
                 <!-- IMG -->
                 <div class="me-3 d-flex justify-content-center" style="width: auto; min-height: 25rem; max-width: 25rem;">
-                    <img class="img-fluid" src= "../../web/uploads/chopper_wano24_11_23_80.jpg" alt=""/>
+                    <img class="rounded-3" style="width: 100%; height: 100%; object-fit: cover;" src= "../../web/<?= Html::encode($model->img_img) ?>" alt=""/>
                 </div>
 
                 <div style="max-width: 20rem">
                     <!-- User -->
                     <div class="lh-1 pt-2 fw-bold">
-                        <?= Html::tag('p', Html::encode(Yii::$app->user->identity->username)) ?>
+                        <?= Html::tag('p', Html::encode($model->img_user)) ?>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="fw-bold pt-2">
+                        <?= Html::encode($model->img_title) ?>
                     </div>
 
                     <!-- Caption -->
-                    <div class="py-0 text-break" style="max-height: 5rem;">
-                        <?= Html::tag('p', Html::encode($text)) ?>
+                    <div class="py-0 text-break" style="height: auto;">
+                        <?= Html::tag('p', Html::encode($model->img_capt)) ?>
                     </div>
 
                     <!-- Date -->
                     <div class="lh-1 pt-2 text-secondary" style="font-size: 75%; border-top: solid #464646 1px;">
-                        <p>12/11/2023</p>
+                        <?= Html::tag('p', Html::encode($model->img_date)) ?>
                     </div>
                 </div>
             </div>

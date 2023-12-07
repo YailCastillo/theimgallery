@@ -14,6 +14,7 @@ use yii\db\ActiveRecord;
  * @property string $img_capt
  * @property string $img_date
  * @property string $img_img
+ * @property string $img_user
  */
 class Image extends ActiveRecord
 {
@@ -35,6 +36,7 @@ class Image extends ActiveRecord
             [['img_date'], 'safe'],
             [['img_title'], 'string', 'max' => 100],
             [['img_capt'], 'string', 'max' => 1000],
+            [['img_user'], 'string', 'max' => 255],
             [['archivo'], 'file', 'extensions' => 'png, jpg'],
         ];
     }
@@ -49,6 +51,7 @@ class Image extends ActiveRecord
             'img_tile' => 'Title',
             'img_capt' => 'Caption',
             'img_date' => 'Date',
+            'img_user' => 'User',
             'archivo' => 'Image',
         ];
     }
