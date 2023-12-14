@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-12-2023 a las 18:00:18
+-- Tiempo de generación: 14-12-2023 a las 21:06:51
 -- Versión del servidor: 8.1.0
 -- Versión de PHP: 8.0.28
 
@@ -45,7 +45,8 @@ INSERT INTO `image` (`img_id`, `img_title`, `img_capt`, `img_date`, `img_img`, `
 (1, 'Basura', 'monomonomonomonomonomono', '13/12/23', 'uploads/yamato13_12_23_61.png', 'Yendro', 25),
 (2, 'Dedoooooooooo', 'naminaminaminaminaminami', '13/12/23', 'uploads/Nami_wano13_12_23_83.png', 'Yendro', 25),
 (3, 'Chopper', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '13/12/23', 'uploads/chopper_wano13_12_23_32.jpg', 'Juan', 24),
-(4, 'Fallout New Vegas', 'Fallout: New Vegas es un videojuego de rol de 2010 perteneciente a la saga Fallout, desarrollado por Obsidian Entertainment, y distribuido por Bethesda Softworks, considerado por muchos el mejor Fallout moderno, y uno de los mejores videojuegos de toda la franquicia.', '13/12/23', 'uploads/newvegas13_12_23_65.png', 'Magazine', 26);
+(4, 'Fallout New Vegas', 'Fallout: New Vegas es un videojuego de rol de 2010 perteneciente a la saga Fallout, desarrollado por Obsidian Entertainment, y distribuido por Bethesda Softworks, considerado por muchos el mejor Fallout moderno, y uno de los mejores videojuegos de toda la franquicia.', '13/12/23', 'uploads/newvegas13_12_23_65.png', 'Magazine', 26),
+(5, 'Kanye Breast', 'One piece, one piece is reaaaaaaal', '14/12/23', 'uploads/imagen_2023-12-14_13303306014_12_23_67.png', 'Magazine', 26);
 
 -- --------------------------------------------------------
 
@@ -65,9 +66,9 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`prof_id`, `prof_img`, `prof_bio`, `id`) VALUES
-(24, 'images/user_icon.png', NULL, 24),
+(24, 'images/user_icon.jpg', NULL, 24),
 (25, '/uploads/profpics/mono14_12_23_52.jpg', 'Mono parado de mono', 25),
-(26, 'images/user_icon.png', NULL, 26);
+(26, 'uploads/profpics/profpic_Magazine(26).png', 'Prueba de cambio de biografía', 26);
 
 -- --------------------------------------------------------
 
@@ -133,7 +134,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `image`
 --
 ALTER TABLE `image`
-  MODIFY `img_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `img_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `profile`
