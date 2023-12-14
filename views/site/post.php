@@ -24,7 +24,7 @@ $this->title = $model->img_title;
                     <img class="rounded-3" style="width: 100%; height: 100%; object-fit: cover;" src= "../../web/<?= Html::encode($model->img_img) ?>" alt="<?= Html::encode($model->img_img) ?>"/>
                 </div>
 
-                <div class="position" style="min-width: 15rem">
+                <div class="position-relative" style="min-width: 15rem">
                     <!-- User -->
                     <div class="lh-1 pt-2 fw-bold">
                         <?= Html::tag('p', Html::encode($model->img_user)) ?>
@@ -45,7 +45,11 @@ $this->title = $model->img_title;
                         <?= Html::tag('p', Html::encode($model->img_date)) ?>
                     </div>
 
-                    <?= Html::submitButton('Delete', ['class' => 'btn btn-danger ms-auto position-absolute bottom-0']) ?>
+                    <?php if (Yii::$app->user->isGuest || $model->prof_id != Yii::$app->user->identity->id) {
+                        echo "";
+                    } else { ?>
+                        <?= Html::submitButton('Delete', ['class' => 'btn btn-danger ms-auto position-absolute bottom-0']) ?>
+                    <?php } ?>
                 </div>
             </div>
         </div>

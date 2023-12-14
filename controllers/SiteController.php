@@ -196,6 +196,8 @@ class SiteController extends Controller
         $model = Profile::findOne(['id' => $prof_id]);
         $user = User::findOne(['id' => $prof_id]);
 
+        $this -> updateProfile($model);
+
         return $this->render('update', [
             'model' => $model,
             'user' => $user,
@@ -229,6 +231,33 @@ class SiteController extends Controller
 
             if ($model -> save(false)) {
                 return $this->redirect(['index']);
+            }
+        }
+    }
+
+    public function updateProfile(Profile $model)
+    {
+        if ($model->load($this->request->post())) {
+
+            $model -> profpic = UploadedFile::getInstance($model, 'profpic');
+
+            if ($model->validate()) {
+                if ($model->profpic) {
+
+                    if (file_exists($model->prof_img)) {
+                        unlink($model->prof_img);
+                    }
+
+                    $rutaprofpic = 'uploads/profpics/profpic_'. Yii::$app->user->identity->username. "(" . Yii::$app->user->identity->id . ")" . "." . $model->profpic->extension;
+
+                    if ($model->profpic->saveAs($rutaprofpic)) {
+                        $model-> prof_img = $rutaprofpic;
+                    }
+                }
+            }
+
+            if ($model -> save(false)) {
+                return $this->redirect(['profile']);
             }
         }
     }

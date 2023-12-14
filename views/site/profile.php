@@ -20,7 +20,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <!-- Bio container -->
             <div class="container-fluid my-2 rounded-4 shadow bg-black py-4" style="max-width: 45rem; max-height: 15rem">
                 <div class="d-flex justify-content-evenly ">
-                    <img class="border border-white border-3 p-1 rounded-circle" style="width: 8rem; height: 8rem; object-fit: cover;" src="../../web/<?= Html::encode($profile->prof_img) ?>"/>
+                    <img class="border border-white border-3 p-1 rounded-circle" style="width: 8rem; height: 8rem; object-fit: cover;" src="
+                    <?php if ($profile->prof_img != 'images/user_icon.jpg') { ?>
+                        <?= Html::encode("../../web/$profile->prof_img") ?>
+                    <?php }else { ?>
+                        <?= Html::encode("../../$profile->prof_img") ?>
+                    <?php } ?>"/>
 
                     <div class="position-relative d-flex flex-column text-white" style="width: 20rem;">
                         <div class="">
@@ -35,11 +40,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
 
                         <div>
-                            <?php if (!Yii::$app->user->isGuest) { ?>
-                                <p><?= Html::a('Edit profile', ['update', 'prof_id' => $user->id], ['class' => 'btn btn-sm btn-dark position-absolute bottom-0']) ?></p>
-                            <?php } else {
-                                echo '';
-                            }?>
+                            <?php
+                                if (Yii::$app->user->isGuest || $profile->prof_id != Yii::$app->user->identity->id) {
+                                    echo "";
+                                } else { ?>
+                                    <?= Html::a('Edit profile', ['update', 'prof_id' => $user->id], ['class' => 'btn btn-sm btn-dark position-absolute bottom-0']) ?>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -53,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
                         <?php foreach ($model as $post) { ?>
                         <div class="m-auto col-4 gx-2 my-1" style="max-width: 13rem; max-height: 13rem;">
-                            <img class="rounded-1" style="width: 100%; height: 100%; object-fit: cover;" src= "../../web/<?= Html::encode($post->img_img)?>" alt="">
+                            <?= Html::a(Html::img("../../web/$post->img_img", ['class' => 'rounded-1', 'style' => 'width: 100%; height: 100%; object-fit: cover;']), ['post', 'img_id' => $post->img_id], ['class' => 'text-decoration-none text-white td-none']) ?>
                         </div>
                         <?php } ?>
                     </div>

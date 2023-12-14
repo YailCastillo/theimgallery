@@ -26,17 +26,15 @@ $this->title = 'TheIMGallery';
                 <div class="d-flex justify-content-between lh-1 pt-2 fw-bold py-2">
                     <?= Html::a(Html::encode($post->img_user), ['profile', 'prof_id' => $post->prof_id], ['class' => 'text-decoration-none text-white td-none']) ?>
                     <?php 
-                        if ($post->prof_id == Yii::$app->user->identity->id) {?>
-                            <?= Html::a('...', ['post', 'img_id' => $post->img_id], ['class' => 'text-decoration-none text-white td-none']) ?>
-                    <?php 
-                        } else {
+                        if (Yii::$app->user->isGuest || $post->prof_id != Yii::$app->user->identity->id) {
                             echo "";
-                        }
-                    ?>
+                        } else if ($post->prof_id == Yii::$app->user->identity->id) {?>
+                            <?= Html::a('...', ['post', 'img_id' => $post->img_id], ['class' => 'text-decoration-none text-white td-none']) ?>
+                    <?php } ?>
                 </div>
 
                 <!-- IMG -->
-                <div class="px-0 d-flex justify-content-center" style="width: auto; min-height: 25rem;">
+                <div class="px-0 d-flex justify-content-center" style="width: auto; height: auto;">
                     <img class="rounded-1" style="width: 100%; height: 100%; object-fit: cover;" src= "../../web/<?= Html::encode($post->img_img) ?>" alt=""/>
                 </div>
 

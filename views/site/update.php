@@ -33,13 +33,18 @@ $username = (Yii::$app->user->identity->username);
                         </div>
 
                         <div>
-                            <img class="border border-white border-3 p-1 rounded-circle" style="width: 8rem; height: 8rem; object-fit: cover;" src="../../web/<?= Html::encode($model->prof_img) ?>"/>
+                            <img class="border border-white border-3 p-1 rounded-circle" style="width: 8rem; height: 8rem; object-fit: cover;" src="
+                                <?php if ($model->prof_img != 'images/user_icon.jpg') { ?>
+                                    <?= Html::encode("../../web/$model->prof_img") ?>
+                                <?php }else { ?>
+                                    <?= Html::encode("../../$model->prof_img") ?>
+                                <?php } ?>"/>
                         </div>
                     </div>
 
                     <?= $form->field($model, 'prof_bio')->label('Biography')->textarea(['maxlength' => true, 'autocomplete' => 'off', 'class' => 'form-control text-white bg-dark border border-secondary', 'rows' => 5, 'style' => 'resize: none;']) ?>
 
-                    <?= $form->field($model, 'prof_img')->label(false)->fileInput(['class' => 'form-control text-white border-secondary bg-dark']) ?>
+                    <?= $form->field($model, 'profpic')->label(false)->fileInput(['class' => 'form-control text-white border-secondary bg-dark']) ?>
 
                     <?= Html::submitButton('Update profile', ['class' => 'btn btn-light border-secondary']) ?>
 
