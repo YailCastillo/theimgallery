@@ -23,9 +23,16 @@ $this->title = 'TheIMGallery';
             <div class="d-flex flex-column my-2 rounded-4 shadow bg-black text-light container-fluid" style="max-width: 25rem; height: auto;">
 
                 <!-- User -->
-                <div class="d-flex justify-content-between lh-1 pt-2 fw-bold">
-                    <?= Html::tag('p', Html::encode($post->img_user)) ?>
-                    <?= Html::a('...', ['post', 'img_id' => $post->img_id], ['class' => 'text-decoration-none text-white td-none']) ?>
+                <div class="d-flex justify-content-between lh-1 pt-2 fw-bold py-2">
+                    <?= Html::a(Html::encode($post->img_user), ['profile', 'prof_id' => $post->prof_id], ['class' => 'text-decoration-none text-white td-none']) ?>
+                    <?php 
+                        if ($post->prof_id == Yii::$app->user->identity->id) {?>
+                            <?= Html::a('...', ['post', 'img_id' => $post->img_id], ['class' => 'text-decoration-none text-white td-none']) ?>
+                    <?php 
+                        } else {
+                            echo "";
+                        }
+                    ?>
                 </div>
 
                 <!-- IMG -->
@@ -39,7 +46,7 @@ $this->title = 'TheIMGallery';
                 </div>
 
                 <!-- Caption -->
-                <div class="py-0 text-break" style="max-height: 5rem;">
+                <div class="py-0 text-break" style="height: auto;">
                     <?= Html::tag('p', Html::encode($post->img_capt)) ?>
                 </div>
 

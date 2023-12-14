@@ -40,7 +40,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Profile', 'url' => ['/site/profile']],
+            Yii::$app->user->isGuest 
+                ? ""
+                : ['label' => 'Profile', 'url' => ['/site/profile?prof_id='. Yii::$app->user->identity->id]],
             Yii::$app->user->isGuest
                 ? ['label' => 'Login', 'url' => ['/site/login']]
                 : '<li class="nav-item">'

@@ -4,6 +4,8 @@
 
 use yii\helpers\Html;
 use app\models\Image;
+use app\models\Profile;
+use app\models\User;
 
 $this->title = 'Profile';
 $this->params['breadcrumbs'][] = $this->title;
@@ -13,17 +15,32 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="d-flex flex-column align-items-center container-fluid">
 
         <!-- Profile container -->
-        <div class="d-flex flex-column align-items-center py-4 px-5 container-fluid rounded-4 shadow-lg" style="height: auto; max-width: 50rem; background-color: #212529;">
+        <div class="d-flex flex-column align-items-center py-3 px-5 container-fluid rounded-4 shadow-lg" style="height: auto; max-width: 50rem; background-color: #212529;">
 
             <!-- Bio container -->
-            <div class="container-fluid my-2 rounded-4 shadow bg-black" style="max-width: 45rem; max-height: 15rem">
-                <div class="row row-cols-2 row-cols-lg-2 border border-white" style="height: 10rem;">
-                    <div class="m-auto">
-                        <img class="col border border-white d-flex rounded-circle p-1" style="max-width: auto; max-height: auto; object-fit: cover;" src="../../images/tony_tony.png"/>
-                    </div>
-                    <div class="col border border-white">
-                        <div class="col border border-white">Column</div>
-                        <div class="col border border-white">Column</div>
+            <div class="container-fluid my-2 rounded-4 shadow bg-black py-4" style="max-width: 45rem; max-height: 15rem">
+                <div class="d-flex justify-content-evenly ">
+                    <img class="border border-white border-3 p-1 rounded-circle" style="width: 8rem; height: 8rem; object-fit: cover;" src="../../web/<?= Html::encode($profile->prof_img) ?>"/>
+
+                    <div class="position-relative d-flex flex-column text-white" style="width: 20rem;">
+                        <div class="">
+                            <h6 class="m-0">Posts</h6>
+                            <?= Html::tag('div', count($model), ['class' => 'mx-auto']) ?>
+                        </div>
+                        <div class="fw-bold">
+                            <?= Html::encode($user->username) ?>
+                        </div>
+                        <div class="text-break">
+                            <?= Html::encode($profile->prof_bio) ?>
+                        </div>
+
+                        <div>
+                            <?php if (!Yii::$app->user->isGuest) { ?>
+                                <p><?= Html::a('Edit profile', ['update', 'prof_id' => $user->id], ['class' => 'btn btn-sm btn-dark position-absolute bottom-0']) ?></p>
+                            <?php } else {
+                                echo '';
+                            }?>
+                        </div>
                     </div>
                 </div>
             </div>

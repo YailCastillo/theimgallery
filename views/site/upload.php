@@ -25,11 +25,11 @@ $user = (Yii::$app->user->identity->username);
                     <?php $form = ActiveForm::begin(); ?>
                     
                     <h1 class=""><?= Html::encode($this->title) ?></h1>
-                    <?= $form->field($model, 'img_user')->label(false)->textInput(['maxlength' => true, 'autocomplete' => 'off', 'value' => $user, 'disable' => true, 'readonly' => true, 'class' => 'form-control-plaintext text-secondary px-0 py-0 pe-none']) ?>
+                    <p class="text-secondary px-0 py-0 pe-none"><?= Html::encode($user) ?></p>
 
                     <?= $form->field($model, 'img_title')->label('Title')->textInput(['maxlength' => true, 'autocomplete' => 'off', 'class' => 'form-control text-white bg-dark border border-secondary']) ?>
 
-                    <?= $form->field($model, 'img_capt')->label('Caption')->textarea(['maxlength' => true, 'autocomplete' => 'off', 'class' => 'form-control text-white bg-dark border border-secondary', 'rows' => 7, 'style' => 'resize: none;']) ?>
+                    <?= $form->field($model, 'img_capt')->label('Caption')->textarea(['maxlength' => true, 'autocomplete' => 'off', 'class' => 'form-control text-white bg-dark border border-secondary', 'rows' => 5, 'style' => 'resize: none;']) ?>
 
                     <?= $form->field($model, 'archivo')->label(false)->fileInput(['class' => 'form-control text-white border-secondary bg-dark']) ?>
 

@@ -8,8 +8,10 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\UpdateForm;
 use app\models\ContactForm;
 use app\models\Image;
+use app\models\Profile;
 use app\models\SignupForm;
 use app\models\User;
 use yii\base\Model;
@@ -86,7 +88,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->redirect('index');
         }
 
         $model->password = '';
@@ -98,7 +100,21 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+
+            //Obtener nombre de usuario
+            $username = $model->username;
+            // Obtener el ID del usuario recién creado
+            $userId = User::find()->where(['username' => $username])->select('id')->scalar();
+
+            // Crear un nuevo objeto de Profile
+            $profile = new Profile();
+            $profile->prof_id = $userId;
+            $profile->id = $userId;
+            $profile->prof_img = 'images/user_icon.png';
+            $profile->save();
+
             return $this->redirect('login');
         }
 
@@ -142,12 +158,16 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionProfile()
+    public function actionProfile($prof_id)
     {
-        $model = Image::find()->all();
+        $model = Image::find()->where(['prof_id' => $prof_id])->all();
+        $profile = Profile::findOne(['id' => $prof_id]);
+        $user = User::findOne(['id' => $prof_id]);
 
         return $this->render('profile', [
             'model' => $model,
+            'profile' => $profile,
+            'user' => $user,
         ]);
     }
 
@@ -171,6 +191,18 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionUpdate($prof_id)
+    {
+        $model = Profile::findOne(['id' => $prof_id]);
+        $user = User::findOne(['id' => $prof_id]);
+
+        return $this->render('update', [
+            'model' => $model,
+            'user' => $user,
+        ]);
+
+    }
+
     public function uploadPost(Image $model)
     {
         if ($model->load($this->request->post())) {
@@ -189,6 +221,8 @@ class SiteController extends Controller
 
                     if ($model->archivo->saveAs($rutaArchivo)) {
                         $model-> img_img = $rutaArchivo;
+                        $model->img_user = Yii::$app->user->identity->username;
+                        $model->prof_id = Yii::$app->user->identity->id;
                     }
                 }
             }
