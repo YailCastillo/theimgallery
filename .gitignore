@@ -72,4 +72,8 @@ tests/_support/_generated
 
 #vagrant folder
 /.vagrant
+
+#Data base file
+db.php
+
 >>>>>>> 4bac8f735dddadef86ab1c9498758427305c20e8

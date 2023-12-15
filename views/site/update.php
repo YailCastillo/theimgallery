@@ -42,11 +42,11 @@ $username = (Yii::$app->user->identity->username);
                         </div>
                     </div>
 
-                    <?= $form->field($model, 'prof_bio')->label('Biography')->textarea(['maxlength' => true, 'autocomplete' => 'off', 'class' => 'form-control text-white bg-dark border border-secondary', 'rows' => 5, 'style' => 'resize: none;']) ?>
+                    <?= $form->field($model, 'prof_bio')->label('Biography', ['class' => 'text-white pb-1'])->textarea(['maxlength' => true, 'autocomplete' => 'off', 'class' => 'form-control text-light bg-dark border border-secondary', 'rows' => 5, 'style' => 'resize: none;']) ?>
 
                     <?= $form->field($model, 'profpic')->label(false)->fileInput(['class' => 'form-control text-white border-secondary bg-dark']) ?>
 
-                    <?= Html::submitButton('Update profile', ['class' => 'btn btn-light border-secondary']) ?>
+                    <?= Html::submitButton('Save', ['class' => 'btn btn-light border-secondary']) ?>
 
                     <div class="mt-3" style="border-top: solid #464646 1px;">
                         <?= $form->field($model, 'img_date')->label(false)->textInput(['maxlength' => true, 'autocomplete' => 'off', 'value' => $date, 'disable' => true, 'readonly' => true, 'class' => 'form-control-plaintext text-secondary px-0 py-0 pe-none']) ?>

@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="position-relative d-flex flex-column text-white" style="width: 20rem;">
                         <div class="">
                             <h6 class="m-0">Posts</h6>
-                            <?= Html::tag('div', count($model), ['class' => 'mx-auto']) ?>
+                            <?= Html::tag('div', count($image), ['class' => 'mx-auto']) ?>
                         </div>
                         <div class="fw-bold">
                             <?= Html::encode($user->username) ?>
@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <!-- Images grid -->
                 <div class="container gx-1 gy-1">
                     <div class="row">
-                        <?php foreach ($model as $post) { ?>
+                        <?php foreach ($image as $post) { ?>
                         <div class="m-auto col-4 gx-2 my-1" style="max-width: 13rem; max-height: 13rem;">
                             <?= Html::a(Html::img("../../web/$post->img_img", ['class' => 'rounded-1', 'style' => 'width: 100%; height: 100%; object-fit: cover;']), ['post', 'img_id' => $post->img_id], ['class' => 'text-decoration-none text-white td-none']) ?>
                         </div>

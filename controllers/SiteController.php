@@ -160,12 +160,12 @@ class SiteController extends Controller
      */
     public function actionProfile($prof_id)
     {
-        $model = Image::find()->where(['prof_id' => $prof_id])->all();
+        $image = Image::find()->where(['prof_id' => $prof_id])->all();
         $profile = Profile::findOne(['id' => $prof_id]);
         $user = User::findOne(['id' => $prof_id]);
 
         return $this->render('profile', [
-            'model' => $model,
+            'image' => $image,
             'profile' => $profile,
             'user' => $user,
         ]);
@@ -257,7 +257,7 @@ class SiteController extends Controller
             }
 
             if ($model -> save(false)) {
-                return $this->redirect(['profile']);
+                return $this->redirect(['profile?prof_id=' . Yii::$app->user->identity->id]);
             }
         }
     }
