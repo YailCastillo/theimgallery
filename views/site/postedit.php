@@ -30,35 +30,31 @@ $this->title = $image->img_title;
                         <?= Html::tag('p', Html::encode($image->img_user)) ?>
                     </div>
 
+                    <?php $form = ActiveForm::begin(); ?>
                     <!-- Title -->
-                    <div class="fw-bold pt-2">
-                        <?= Html::encode($image->img_title) ?>
+                    <div class="pt-2">
+                        <?= $form->field($image, 'img_title')->label('Title', ['class' => 'fw-bold text-white pb-1'])->textarea(['maxlength' => true, 'autocomplete' => 'off', 'class' => 'form-control text-light bg-dark border border-secondary', 'style' => 'resize: none;']) ?>
                     </div>
 
                     <!-- Caption -->
-                    <div class="py-0 text-break" style="height: auto;">
-                        <?= Html::tag('p', Html::encode($image->img_capt)) ?>
+                    <div class="text-break" style="height: auto;">
+                        <?= $form->field($image, 'img_capt')->label('Caption', ['class' => 'fw-bold text-white pb-1'])->textarea(['maxlength' => true, 'autocomplete' => 'off', 'class' => 'form-control text-light bg-dark border border-secondary', 'style' => 'resize: none;']) ?>
                     </div>
 
                     <!-- Date -->
-                    <div class="lh-1 pt-2 text-secondary" style="font-size: 75%; border-top: solid #464646 1px;">
-                        <?= Html::tag('p', Html::encode($image->img_date)) ?>
-                    </div>
-
-                    <?php if (Yii::$app->user->isGuest || $image->prof_id != Yii::$app->user->identity->id) {
-                        echo "";
-                    } else { ?>
-                        <div class="position-absolute bottom-0">
-                            <?= Html::a('Delete', ['delete', 'img_id' => $image->img_id], [
-                                'class' => 'btn btn-danger ms-auto',
-                                'data' => [
-                                    'confirm' => 'Are you sure you want to delete this post?',
-                                    'method' => 'post',
-                                ],
-                            ]) ?>
-                            <?= Html::a('Edit', ['postedit', 'img_id' => $image->img_id], ['class' => 'btn btn-primary ms-auto']) ?>
+                    <div class="d-flex justify-content-between lh-1 pt-2" style="border-top: solid #464646 1px;">
+                        <div>
+                            <?= Html::tag('p', Html::encode($image->img_date), ['class' => 'text-secondary', 'style' => 'font-size: 75%;']) ?>
                         </div>
-                    <?php } ?>
+                        <div>
+                            <?php if (Yii::$app->user->isGuest || $image->prof_id != Yii::$app->user->identity->id) {
+                                echo "";
+                            } else { ?>
+                                <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <?php ActiveForm::end(); ?>
                 </div>
             </div>
         </div>

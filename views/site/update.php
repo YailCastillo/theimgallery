@@ -34,22 +34,22 @@ $username = (Yii::$app->user->identity->username);
 
                         <div>
                             <img class="border border-white border-3 p-1 rounded-circle" style="width: 8rem; height: 8rem; object-fit: cover;" src="
-                                <?php if ($model->prof_img != 'images/user_icon.jpg') { ?>
-                                    <?= Html::encode("../../web/$model->prof_img") ?>
+                                <?php if ($profile->prof_img != 'images/user_icon.jpg') { ?>
+                                    <?= Html::encode("../../web/$profile->prof_img") ?>
                                 <?php }else { ?>
-                                    <?= Html::encode("../../$model->prof_img") ?>
+                                    <?= Html::encode("../../$profile->prof_img") ?>
                                 <?php } ?>"/>
                         </div>
                     </div>
 
-                    <?= $form->field($model, 'prof_bio')->label('Biography', ['class' => 'text-white pb-1'])->textarea(['maxlength' => true, 'autocomplete' => 'off', 'class' => 'form-control text-light bg-dark border border-secondary', 'rows' => 5, 'style' => 'resize: none;']) ?>
+                    <?= $form->field($profile, 'prof_bio')->label('Biography', ['class' => 'text-white pb-1'])->textarea(['maxlength' => true, 'autocomplete' => 'off', 'class' => 'form-control text-light bg-dark border border-secondary', 'rows' => 5, 'style' => 'resize: none;']) ?>
 
-                    <?= $form->field($model, 'profpic')->label(false)->fileInput(['class' => 'form-control text-white border-secondary bg-dark']) ?>
+                    <?= $form->field($profile, 'profpic')->label(false)->fileInput(['class' => 'form-control text-white border-secondary bg-dark']) ?>
 
                     <?= Html::submitButton('Save', ['class' => 'btn btn-light border-secondary']) ?>
 
                     <div class="mt-3" style="border-top: solid #464646 1px;">
-                        <?= $form->field($model, 'img_date')->label(false)->textInput(['maxlength' => true, 'autocomplete' => 'off', 'value' => $date, 'disable' => true, 'readonly' => true, 'class' => 'form-control-plaintext text-secondary px-0 py-0 pe-none']) ?>
+                        <?= $form->field($profile, 'img_date')->label(false)->textInput(['maxlength' => true, 'autocomplete' => 'off', 'value' => $date, 'disable' => true, 'readonly' => true, 'class' => 'form-control-plaintext text-secondary px-0 py-0 pe-none']) ?>
                     </div>
 
                     <?php ActiveForm::end(); ?>

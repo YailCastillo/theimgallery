@@ -15,6 +15,7 @@ use app\models\Profile;
 use app\models\SignupForm;
 use app\models\User;
 use yii\base\Model;
+use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 
 class SiteController extends Controller
@@ -68,10 +69,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $model = Image::find()->all();
+        $image = Image::find()->all();
 
         return $this->render('index', [
-            'model' => $model
+            'image' => $image
         ]);
     }
 
@@ -186,20 +187,56 @@ class SiteController extends Controller
 
     public function actionPost($img_id)
     {
+        $image = Image::findOne(['img_id' => $img_id]);
+
         return $this->render('post', [
-            'model' => $this->findModel($img_id),
+            'image' => $image,
         ]);
+    }
+
+    public function actionDelete($img_id)
+    {
+        $image = Image::findOne(['img_id' => $img_id]);
+
+        if (file_exists($image->img_img)) {
+            unlink($image->img_img);
+        }
+
+        $image->delete();
+
+        return $this->redirect(['profile?prof_id=' . Yii::$app->user->identity->id]);
+    }
+
+    public function actionPostedit($img_id)
+    {
+        $image = Image::findOne(['img_id' => $img_id]);
+
+        $this -> actionEdit($image);
+
+        return $this->render('postedit', [
+            'image' => $image,
+        ]);
+    }
+
+    public function actionEdit(Image $model)
+    {
+        if ($model->load($this->request->post())) {
+
+            if ($model -> save(false)) {
+                return $this->redirect(['post?img_id=' . Yii::$app->user->identity->id]);
+            }
+        }
     }
 
     public function actionUpdate($prof_id)
     {
-        $model = Profile::findOne(['id' => $prof_id]);
+        $profile = Profile::findOne(['id' => $prof_id]);
         $user = User::findOne(['id' => $prof_id]);
 
-        $this -> updateProfile($model);
+        $this -> updateProfile($profile);
 
         return $this->render('update', [
-            'model' => $model,
+            'profile' => $profile,
             'user' => $user,
         ]);
 
