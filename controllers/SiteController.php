@@ -70,9 +70,11 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $image = Image::find()->all();
+        $profile = Profile::find()->all();
 
         return $this->render('index', [
-            'image' => $image
+            'image' => $image,
+            'profile' => $profile
         ]);
     }
 
@@ -288,7 +290,7 @@ class SiteController extends Controller
                     $rutaprofpic = 'uploads/profpics/profpic_'. Yii::$app->user->identity->username. "(" . Yii::$app->user->identity->id . ")" . "." . $model->profpic->extension;
 
                     if ($model->profpic->saveAs($rutaprofpic)) {
-                        $model-> prof_img = $rutaprofpic;
+                        $model-> prof_img = 'web/'.$rutaprofpic;
                     }
                 }
             }
