@@ -36,12 +36,7 @@ $username = (Yii::$app->user->identity->username);
 
                         <!-- Actual Profile Pic -->
                         <div>
-                            <img class="border border-white border-3 p-1 rounded-circle" style="width: 8rem; height: 8rem; object-fit: cover;" src="
-                                <?php if ($profile->prof_img != 'images/user_icon.jpg') { ?>
-                                    <?= Html::encode("../../web/$profile->prof_img") ?>
-                                <?php }else { ?>
-                                    <?= Html::encode("../../$profile->prof_img") ?>
-                                <?php } ?>"/>
+                            <img class="border border-white border-3 p-1 rounded-circle" style="width: 8rem; height: 8rem; object-fit: cover;" src="../../<?= Html::encode($profile->prof_img)?>"/>
                         </div>
                     </div>
 

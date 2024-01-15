@@ -21,12 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="container-fluid my-2 rounded-4 shadow bg-black py-4" style="max-width: 45rem; max-height: 15rem">
                 <div class="d-flex justify-content-evenly ">
                     <!-- Profile pic -->
-                    <img class="border border-white border-3 p-1 rounded-circle" style="width: 8rem; height: 8rem; object-fit: cover;" src="
-                    <?php if ($profile->prof_img != 'images/user_icon.jpg') { ?>
-                        <?= Html::encode("../../web/$profile->prof_img") ?>
-                    <?php }else { ?>
-                        <?= Html::encode("../../$profile->prof_img") ?>
-                    <?php } ?>"/>
+                    <img class="border border-white border-3 p-1 rounded-circle" style="width: 8rem; height: 8rem; object-fit: cover;" src="../../<?= Html::encode($profile->prof_img)?>"/>
 
                     <div class="position-relative d-flex flex-column text-white" style="width: 20rem;">
                         <!-- Post Counter -->
