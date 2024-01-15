@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <!-- Bio container -->
             <div class="container-fluid my-2 rounded-4 shadow bg-black py-4" style="max-width: 45rem; max-height: 15rem">
                 <div class="d-flex justify-content-evenly ">
+                    <!-- Profile pic -->
                     <img class="border border-white border-3 p-1 rounded-circle" style="width: 8rem; height: 8rem; object-fit: cover;" src="
                     <?php if ($profile->prof_img != 'images/user_icon.jpg') { ?>
                         <?= Html::encode("../../web/$profile->prof_img") ?>
@@ -28,17 +29,21 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php } ?>"/>
 
                     <div class="position-relative d-flex flex-column text-white" style="width: 20rem;">
+                        <!-- Post Counter -->
                         <div class="">
                             <h6 class="m-0">Posts</h6>
                             <?= Html::tag('div', count($image), ['class' => 'mx-auto']) ?>
                         </div>
+                        <!-- Username -->
                         <div class="fw-bold">
                             <?= Html::encode($user->username) ?>
                         </div>
+                        <!-- Biography -->
                         <div class="text-break">
                             <?= Html::encode($profile->prof_bio) ?>
                         </div>
 
+                        <!-- Edit Profile Button -->
                         <div>
                             <?php
                                 if (Yii::$app->user->isGuest || $profile->prof_id != Yii::$app->user->identity->id) {
@@ -56,7 +61,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <!-- Images grid -->
                 <div class="container gx-1 gy-1">
+                    <!-- Image Container-->
                     <div class="row">
+                        <!-- Image post -->
                         <?php foreach ($image as $post) { ?>
                         <div class="m-auto col-4 gx-2 my-1" style="max-width: 13rem; max-height: 13rem;">
                             <?= Html::a(Html::img("../../web/$post->img_img", ['class' => 'rounded-1', 'style' => 'width: 100%; height: 100%; object-fit: cover;']), ['post', 'img_id' => $post->img_id], ['class' => 'text-decoration-none text-white td-none']) ?>
@@ -64,11 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php } ?>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-    
 </body>

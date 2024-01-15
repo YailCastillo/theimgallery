@@ -22,9 +22,11 @@ $this->title = 'TheIMGallery';
             <?php foreach ($image as $images) { ?>
             <div class="d-flex flex-column my-2 rounded-4 shadow bg-black text-light container-fluid" style="max-width: 25rem; height: auto;">
 
-                <!-- User -->
                 <div class="d-flex justify-content-between lh-1 pt-2 fw-bold py-2">
+                    <!-- Username -->
                     <?= Html::a(Html::encode($images->img_user), ['profile', 'prof_id' => $images->prof_id], ['class' => 'text-decoration-none text-white td-none']) ?>
+                    
+                    <!-- Post dots -->
                     <?php 
                         if (Yii::$app->user->isGuest || $images->prof_id != Yii::$app->user->identity->id) {
                             echo "";
@@ -56,6 +58,7 @@ $this->title = 'TheIMGallery';
             <?php }?>
     </div>
 
+    <!-- Upload button -->
     <?php if (!Yii::$app->user->isGuest) { ?>
         <p><?= Html::a('Upload', ['upload'], ['class' => 'fixed-bottom btn btn-lg btn-dark bg-black my-3 mx-3 rounded-4', 'style' => 'width: 8%;']) ?></p>
     <?php } else {

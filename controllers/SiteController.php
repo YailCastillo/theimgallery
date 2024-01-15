@@ -218,12 +218,12 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionEdit(Image $model)
+    public function actionEdit(Image $image)
     {
-        if ($model->load($this->request->post())) {
+        if ($image->load($this->request->post())) {
 
-            if ($model -> save(false)) {
-                return $this->redirect(['post?img_id=' . Yii::$app->user->identity->id]);
+            if ($image -> save(false)) {
+                return $this->redirect(['post?img_id=' . $image->img_id]);
             }
         }
     }

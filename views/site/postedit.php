@@ -38,14 +38,16 @@ $this->title = $image->img_title;
 
                     <!-- Caption -->
                     <div class="text-break" style="height: auto;">
-                        <?= $form->field($image, 'img_capt')->label('Caption', ['class' => 'fw-bold text-white pb-1'])->textarea(['maxlength' => true, 'autocomplete' => 'off', 'class' => 'form-control text-light bg-dark border border-secondary', 'style' => 'resize: none;']) ?>
+                        <?= $form->field($image, 'img_capt')->label('Caption', ['class' => 'fw-bold text-white pb-1', 'value' => $image->img_capt])->textarea(['maxlength' => true, 'autocomplete' => 'off', 'class' => 'form-control text-light bg-dark border border-secondary', 'style' => 'resize: none;']) ?>
                     </div>
 
-                    <!-- Date -->
                     <div class="d-flex justify-content-between lh-1 pt-2" style="border-top: solid #464646 1px;">
+                        <!-- Date -->
                         <div>
                             <?= Html::tag('p', Html::encode($image->img_date), ['class' => 'text-secondary', 'style' => 'font-size: 75%;']) ?>
                         </div>
+
+                        <!-- Save button -->
                         <div>
                             <?php if (Yii::$app->user->isGuest || $image->prof_id != Yii::$app->user->identity->id) {
                                 echo "";
