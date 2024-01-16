@@ -49,14 +49,9 @@ $this->title = $image->img_title;
                         echo "";
                     } else { ?>
                         <div class="position-absolute bottom-0">
-                            <?= Html::a('Delete', ['delete', 'img_id' => $image->img_id], [
-                                'class' => 'btn btn-danger ms-auto',
-                                'data' => [
-                                    'confirm' => 'Are you sure you want to delete this post?',
-                                    'method' => 'post',
-                                ],
-                            ]) ?>
-                            <?= Html::a('Edit', ['postedit', 'img_id' => $image->img_id], ['class' => 'btn btn-primary ms-auto']) ?>
+                            <?= Html::a('Delete <i class="bi bi-trash-fill ms-1"></i>', ['delete', 'img_id' => $image->img_id], ['class' => 'btn btn-danger', 'data' => ['confirm' => 'Are you sure you want to delete this post?', 'method' => 'post']]) ?>
+                            
+                            <?= Html::a('Edit <i class="bi bi-pencil-fill ms-1"></i>', ['postedit', 'img_id' => $image->img_id], ['class' => 'btn btn-primary']) ?>
                         </div>
                     <?php } ?>
                 </div>
