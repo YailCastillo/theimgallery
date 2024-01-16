@@ -46,7 +46,7 @@ $username = (Yii::$app->user->identity->username);
                     <!-- New Profile Pic file input -->
                     <?= $form->field($profile, 'profpic')->label(false)->fileInput(['class' => 'form-control text-white border-secondary bg-dark']) ?>
 
-                    <?= Html::submitButton('Save', ['class' => 'btn btn-light border-secondary']) ?>
+                    <?= Html::submitButton('Save <i class="bi bi-check" style="font-size: 1.3rem;"></i>', ['class' => 'd-flex align-items-center btn btn-light px-2 py-1']) ?>
 
                     <?php ActiveForm::end(); ?>
                 </div>
