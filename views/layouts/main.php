@@ -11,7 +11,7 @@ use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
 
 use app\models\Profile;
-
+use Symfony\Component\Mime\Encoder\EncoderInterface;
 
 AppAsset::register($this);
 
@@ -28,6 +28,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <head>
     <title><?= Html::encode($this->title) ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
@@ -39,7 +42,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     Yii::$app->user->isGuest ? "" : $profile = Profile::findOne(['id' => Yii::$app->user->identity->id]);
 
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => Html::tag('div', Html::encode(Yii::$app->name) ,['class' => 'font-title fw-bold']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => ['class' => 'navbar-expand-md navbar-dark bg-black fixed-top']
     ]);
