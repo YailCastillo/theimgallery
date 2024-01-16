@@ -52,7 +52,7 @@ $this->title = $image->img_title;
                             <?php if (Yii::$app->user->isGuest || $image->prof_id != Yii::$app->user->identity->id) {
                                 echo "";
                             } else { ?>
-                                <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                                <?= Html::submitButton('Save <i class="bi bi-check" style="font-size: 1.3rem;"></i>', ['class' => 'd-flex align-items-center btn btn-success']) ?>
                             <?php } ?>
                         </div>
                     </div>
