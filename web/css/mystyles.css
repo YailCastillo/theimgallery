@@ -1,0 +1,33 @@
+::-webkit-scrollbar {
+    width: .65rem;
+    height: .65rem;
+}
+  
+::-webkit-scrollbar-track {
+    width: 10px;
+    border-radius: 1rem;
+    background-color: #757575;
+}
+  
+::-webkit-scrollbar-thumb {
+    width: 10px;
+    border-radius: 1rem;
+    background-color: #444444;
+}
+
+.font-title {
+    font-family: 'Rock Salt', cursive;
+}
+
+.feed-container-bg {
+    background-color: #212529;
+}
+
+.no-format {
+    text-decoration: none;
+    color: white;
+    
+}
+.no-format:hover {
+    color: white;
+}
