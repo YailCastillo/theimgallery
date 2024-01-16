@@ -16,7 +16,7 @@ $this->title = 'TheIMGallery';
     <div class="d-flex flex-column align-items-center container-fluid">
 
         <!-- Feed container -->
-        <div class="d-flex flex-column align-items-center py-4 px-5 container-fluid rounded-4 shadow-lg feed-container-bg" style="height: auto; width: 50rem;">
+        <div class="d-flex flex-column align-items-center mt-1 py-4 px-5 container-fluid rounded-4 shadow-lg feed-container-bg" style="height: auto; width: 50rem;">
 
             <!-- Post container -->
             <?php foreach ($image as $images) { 
