@@ -16,7 +16,7 @@ $this->title = 'TheIMGallery';
     <div class="d-flex flex-column align-items-center container-fluid">
 
         <!-- Feed container -->
-        <div class="d-flex flex-column align-items-center py-4 px-5 container-fluid rounded-4 shadow-lg" style="height: auto; width: 50rem; background-color: #212529;">
+        <div class="d-flex flex-column align-items-center py-4 px-5 container-fluid rounded-4 shadow-lg feed-container-bg" style="height: auto; width: 50rem;">
 
             <!-- Post container -->
             <?php foreach ($image as $images) { 
@@ -28,7 +28,7 @@ $this->title = 'TheIMGallery';
                             <!-- Profile pic -->
                             <?= Html::a(Html::img("../../$profile->prof_img", ['class' => 'rounded-circle me-1', 'style' => 'width: 1.6rem; height: 1.6rem; object-fit: cover; padding: .1rem;']), ['profile', 'prof_id' => $images->prof_id]) ?>
                             <!-- Username -->
-                            <?= Html::a(Html::encode($images->img_user), ['profile', 'prof_id' => $images->prof_id], ['class' => 'text-decoration-none text-white td-none']) ?>
+                            <?= Html::a(Html::encode($images->img_user), ['profile', 'prof_id' => $images->prof_id], ['class' => 'no-format']) ?>
                         </div>
                         
                         <!-- Post dots -->
