@@ -10,6 +10,9 @@ use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
 
+use app\models\Profile;
+
+
 AppAsset::register($this);
 
 $this->registerCsrfMetaTags();
@@ -32,28 +35,43 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
 <header id="header">
     <?php
+
+    Yii::$app->user->isGuest ? "" : $profile = Profile::findOne(['id' => Yii::$app->user->identity->id]);
+
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => ['class' => 'navbar-expand-md navbar-dark bg-black fixed-top']
     ]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav ms-auto'],
+        'options' => ['class' => 'navbar-nav ms-auto d-flex align-items-center'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            Yii::$app->user->isGuest 
-                ? ""
-                : ['label' => 'Profile', 'url' => ['/site/profile?prof_id='. Yii::$app->user->identity->id]],
             Yii::$app->user->isGuest
-                ? ['label' => 'Login', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
-                    . Html::beginForm(['/site/logout'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'nav-link btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>'
+                ? Html::a('Login', ['login'], ['class' => 'btn btn-light fw-bold'])
+                : '<div class="dropdown nav-link logout">
+                        <div class="dropdown-toggle d-flex align-items-center fst-normal" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">'
+                            . Html::encode(Yii::$app->user->identity->username)
+                            . Html::img("../../$profile->prof_img", ['class' => 'rounded-circle my-0 ms-2', 'style' => 'width: 2rem; height: 2rem; object-fit: cover; padding: .1rem;']) .
+                        '</div>
+                        <li class="nav-item text-white">
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                <li class="">'
+                                    . Html::a('Profile', ['profile?prof_id=' . Yii::$app->user->identity->id], ['class' => 'dropdown-item nav-link logout']).
+                                '</li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li class="dropdown-item px-0 py-0">
+                                    <div class="d-flex align-items-center";>'
+                                        . Html::beginForm(['/site/logout'])
+                                        . Html::submitButton('Logout',
+                                            ['class' => 'nav-link btn btn-link']
+                                        )
+                                        . Html::endForm() .
+                                        '<i class="bi bi-door-open-fill"></i>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </div>'
         ]
     ]);
     NavBar::end();
