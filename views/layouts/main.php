@@ -59,18 +59,17 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                         <li class="nav-item text-white">
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                                 <li class="">'
-                                    . Html::a('Profile', ['profile?prof_id=' . Yii::$app->user->identity->id], ['class' => 'dropdown-item nav-link logout']).
+                                    . Html::a('Profile <i class="bi bi-person-fill"></i>', ['profile?prof_id=' . Yii::$app->user->identity->id], ['class' => 'dropdown-item nav-link logout']).
                                 '</li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li class="dropdown-item px-0 py-0">
                                     <div class="d-flex align-items-center";>'
                                         . Html::beginForm(['/site/logout'])
-                                        . Html::submitButton('Logout',
-                                            ['class' => 'nav-link btn btn-link']
+                                        . Html::submitButton('Logout <i class="bi bi-door-open-fill"></i>',
+                                            ['class' => 'nav-link btn btn-link logout']
                                         )
                                         . Html::endForm() .
-                                        '<i class="bi bi-door-open-fill"></i>
-                                    </div>
+                                    '</div>
                                 </li>
                             </ul>
                         </li>
