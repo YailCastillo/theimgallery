@@ -76,3 +76,4 @@ tests/_support/_generated
 >>>>>>> 4bac8f735dddadef86ab1c9498758427305c20e8
 config/db.php
 web/uploads
+config/db.php
