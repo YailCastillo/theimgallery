@@ -1,3 +1,7 @@
+:root {
+    --primary: #212529;
+    --secondary: #6c757d;
+}
 ::-webkit-scrollbar {
     width: .65rem;
     height: .65rem;
@@ -22,13 +26,13 @@
 }
 
 .feed-container-bg {
-    background-color: #212529;
+    background-color: var(--primary);
 }
 
 /* Like button */
 .like-btn {
     text-decoration: none;
-    color: #6c757d;
+    color: var(--secondary);
     font-size: 1.2rem;
     transition: color 0.1s, font-size 0.1s;
     transition-delay: 0.2s;
@@ -66,4 +70,20 @@
 .prof-img-size:hover {
     width: 102%;
     height: 102%;
+}
+
+/* Back Button */
+.back-btn {
+    color: var(--secondary);
+    font-size: 1rem;
+    padding: .2rem .5rem;
+    border: solid 1px var(--primary);
+    border-radius: 1rem;
+    transition: background-color .3s, border .3s, color .3s;
+}
+
+.back-btn:hover {
+    background-color: var(--secondary);
+    border: solid 1px var(--secondary);
+    color: var(--primary);
 }
