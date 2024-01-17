@@ -8,6 +8,7 @@ use app\models\Image;
 use yii\widgets\ActiveForm;
 
 $this->title = $image->img_title;
+
 ?>
 <body>
     <!-- Main container -->
@@ -41,8 +42,13 @@ $this->title = $image->img_title;
                     </div>
 
                     <!-- Date -->
-                    <div class="lh-1 pt-2 text-secondary" style="font-size: 75%; border-top: solid #464646 1px;">
-                        <?= Html::tag('p', Html::encode($image->img_date)) ?>
+                    <div class="d-flex justify-content-between lh-1 pt-2" style="border-top: solid #464646 1px;">
+                        <?= Html::tag('p', Html::encode($image->img_date), ['class' => 'text-secondary', 'style' => 'font-size: 75%;']) ?>
+
+                        <div class="pb-3 d-flex align-items-center">
+                            <?= Html::a('<i class="bi bi-hand-thumbs-up"></i> 0', ['postedit', 'img_id' => $image->img_id], ['class' => 'me-2 like-btn']) ?>
+                            <?= Html::a('<i class="bi bi-chat"></i> 0', ['postedit', 'img_id' => $image->img_id], ['class' => 'like-btn']) ?>
+                        </div>
                     </div>
 
                     <?php if (Yii::$app->user->isGuest || $image->prof_id != Yii::$app->user->identity->id) {

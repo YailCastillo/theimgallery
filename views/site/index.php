@@ -37,8 +37,8 @@ $this->title = 'TheIMGallery';
                                 echo "";
                             } else if ($images->prof_id == Yii::$app->user->identity->id) {?>
                                 <div class="dropdown">
-                                    <i class="bi bi-three-dots dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+                                    <i class="bi bi-three-dots dropdown-toggle" type="button"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                    <ul class="dropdown-menu dropdown-menu-dark drop" aria-labelledby="dropdownMenuButton1">
                                         <li class="">
                                             <?= Html::a('Edit <i class="bi bi-pencil-fill ms-2"></i>', ['postedit', 'img_id' => $images->img_id], ['class' => 'dropdown-item d-flex aling-items-center', 'style' => 'color: #4d5eff;']) ?>
                                         </li>
@@ -69,8 +69,8 @@ $this->title = 'TheIMGallery';
                     <div class="d-flex justify-content-between lh-1 pt-2" style="border-top: solid #464646 1px;">
                         <?= Html::tag('p', Html::encode($images->img_date), ['class' => 'text-secondary', 'style' => 'font-size: 75%;']) ?>
                         <div class="pb-3 text-secondary">
-                            <i class="bi bi-hand-thumbs-up me-2" style="font-size: 1.2rem;">0</i>
-                            <i class="bi bi-chat" style="font-size: 1.2rem;">0</i>
+                            <?= Html::a('<i class="bi bi-hand-thumbs-up"></i> 0', ['postedit', 'img_id' => $images->img_id], ['class' => 'me-2 like-btn user-select-none']) ?>
+                            <?= Html::a('<i class="bi bi-chat"></i> 0', ['postedit', 'img_id' => $images->img_id], ['class' => 'like-btn user-select-none']) ?>
                         </div>
                     </div>
                 </div>
