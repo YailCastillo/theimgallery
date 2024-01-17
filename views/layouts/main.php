@@ -50,7 +50,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-nav ms-auto d-flex align-items-center'],
         'items' => [
             Yii::$app->user->isGuest
-                ? Html::a('Login', ['login'], ['class' => 'btn btn-light fw-bold'])
+                ? Html::a('Login', ['login'], ['class' => 'btn btn-sm btn-dark fw-bold me-2']) . Html::a('Signup', ['signup'], ['class' => 'btn btn-light fw-bold'])
                 : '<div class="dropdown nav-link logout">
                         <div class="dropdown-toggle d-flex align-items-center fst-normal" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">'
                             . Html::encode(Yii::$app->user->identity->username)
