@@ -85,13 +85,14 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect('index');
+            return $this->redirect($_SERVER['HTTP_REFERER']);
         }
 
         $model->password = '';
@@ -135,7 +136,7 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->redirect($_SERVER['HTTP_REFERER']);
     }
 
     /**
