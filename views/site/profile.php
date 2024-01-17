@@ -17,6 +17,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <!-- Profile container -->
         <div class="d-flex flex-column align-items-center py-3 px-5 container-fluid rounded-4 shadow-lg" style="height: auto; max-width: 50rem; background-color: #212529;">
 
+            <!-- Back button -->
+            <div class="me-auto">
+                <?= Html::a('<i class="bi bi-arrow-left-circle me-1"></i>Back', $_SERVER['HTTP_REFERER'], ['class' => 'back-btn no-format d-flex align-items-center']) ?>
+            </div>
+
             <!-- Bio container -->
             <div class="container-fluid my-2 rounded-4 shadow bg-black py-4" style="max-width: 45rem; max-height: 15rem">
                 <div class="d-flex justify-content-evenly ">

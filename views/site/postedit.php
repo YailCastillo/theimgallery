@@ -14,7 +14,12 @@ $this->title = $image->img_title;
     <div class="d-flex flex-column align-items-center container-fluid">
 
         <!-- Feed container -->
-        <div class="d-flex flex-column align-items-center py-4 px-5 container-fluid rounded-4 shadow-lg" style="height: auto; width: 50rem; background-color: #212529;">
+        <div class="d-flex flex-column align-items-center py-3 px-5 container-fluid rounded-4 shadow-lg" style="height: auto; width: 50rem; background-color: #212529;">
+        
+            <!-- Back button -->
+            <div class="me-auto">
+                <?= Html::a('<i class="bi bi-arrow-left-circle me-1"></i>Back', $_SERVER['HTTP_REFERER'], ['class' => 'back-btn no-format d-flex align-items-center']) ?>
+            </div>
 
             <!-- Post container -->
             <div class="d-flex my-2 py-3 rounded-4 shadow bg-black text-light container-fluid justify-content-center" style="width: auto; height: auto;">
