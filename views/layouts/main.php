@@ -51,7 +51,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'items' => [
             Yii::$app->user->isGuest
                 ? Html::a('Login', ['login'], ['class' => 'btn btn-sm btn-dark fw-bold me-2']) . Html::a('Signup', ['signup'], ['class' => 'btn btn-light fw-bold'])
-                : '<div class="dropdown nav-link logout">
+                : '<div class="dropdown nav-link logout py-0">
                         <div class="dropdown-toggle d-flex align-items-center fst-normal" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">'
                             . Html::encode(Yii::$app->user->identity->username)
                             . Html::img("../../$profile->prof_img", ['class' => 'rounded-circle my-0 ms-2', 'style' => 'width: 2rem; height: 2rem; object-fit: cover; padding: .1rem;']) .
