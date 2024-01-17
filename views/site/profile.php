@@ -60,8 +60,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
                         <!-- Image post -->
                         <?php foreach ($image as $post) { ?>
-                        <div class="m-auto col-4 gx-2 my-1" style="max-width: 13rem; max-height: 13rem;">
-                            <?= Html::a(Html::img("../../web/$post->img_img", ['class' => 'rounded-1', 'style' => 'width: 100%; height: 100%; object-fit: cover;']), ['post', 'img_id' => $post->img_id], ['class' => 'text-decoration-none text-white td-none']) ?>
+                        <div class="m-auto col-4 gx-2 my-1 post-image-container">
+                            <?= Html::a(Html::img("../../web/$post->img_img", ['class' => 'rounded-1 prof-img-size']), ['post', 'img_id' => $post->img_id], ['class' => 'no-format td-none']) ?>
                         </div>
                         <?php } ?>
                     </div>
@@ -69,4 +69,12 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
+
+    <!-- Upload button -->
+    <?php if (!Yii::$app->user->isGuest) { ?>
+        <p><?= Html::a('<i class="bi bi-pencil-fill" style="font-size: 2rem;"></i>', ['upload'], ['class' => 'fixed-bottom btn btn-lg btn-dark bg-black my-3 mx-3 rounded-4', 'style' => 'width: 5rem;']) ?></p>
+    <?php } else {
+        echo '';
+    }?>
+    
 </body>
