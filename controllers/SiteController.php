@@ -117,6 +117,8 @@ class SiteController extends Controller
             $profile->prof_id = $userId;
             $profile->id = $userId;
             $profile->prof_img = 'images/user_icon.png';
+            $profile->prof_color = '--default';
+            $profile->prof_fontcolor = '--white';
             $profile->save();
 
             return $this->redirect('login');
