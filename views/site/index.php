@@ -40,10 +40,10 @@ $this->title = 'TheIMGallery';
                                     <i class="bi bi-three-dots dropdown-toggle" type="button"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
                                     <ul class="dropdown-menu dropdown-menu-dark drop" aria-labelledby="dropdownMenuButton1">
                                         <li class="">
-                                            <?= Html::a('Edit <i class="bi bi-pencil-fill ms-2"></i>', ['postedit', 'img_id' => $images->img_id], ['class' => 'dropdown-item d-flex aling-items-center', 'style' => 'color: #4d5eff;']) ?>
+                                            <?= Html::a('Edit <i class="bi bi-pencil-fill ms-2"></i>', ['postedit', 'img_id' => $images->img_id], ['class' => 'dropdown-item d-flex aling-items-center', 'style' => 'color: var(--like);']) ?>
                                         </li>
                                         <li class="">
-                                            <?= Html::a('Delete <i class="bi bi-trash-fill ms-1"></i>', ['delete', 'img_id' => $images->img_id], ['class' => 'dropdown-item d-flex aling-items-center', 'style' => 'color: #ff4d4d', 'data' => ['confirm' => 'Are you sure you want to delete this post?', 'method' => 'post']]) ?>
+                                            <?= Html::a('Delete <i class="bi bi-trash-fill ms-1"></i>', ['delete', 'img_id' => $images->img_id], ['class' => 'dropdown-item d-flex aling-items-center', 'style' => 'color: var(--delete);', 'data' => ['confirm' => 'Are you sure you want to delete this post?', 'method' => 'post']]) ?>
                                         </li>
                                     </ul>
                                 </div>
@@ -69,8 +69,10 @@ $this->title = 'TheIMGallery';
                     <div class="d-flex justify-content-between lh-1 pt-2" style="border-top: solid #464646 1px;">
                         <?= Html::tag('p', Html::encode($images->img_date), ['class' => 'text-secondary', 'style' => 'font-size: 75%;']) ?>
                         <div class="pb-3 text-secondary">
-                            <?= Html::a('<i class="bi bi-hand-thumbs-up"></i> 0', ['postedit', 'img_id' => $images->img_id], ['class' => 'me-2 like-btn user-select-none']) ?>
-                            <?= Html::a('<i class="bi bi-chat"></i> 0', ['postedit', 'img_id' => $images->img_id], ['class' => 'like-btn user-select-none']) ?>
+                            <!-- Like Button -->
+                            <?= Html::a('0 <i class="bi bi-hand-thumbs-up"></i>', ['postedit', 'img_id' => $images->img_id], ['class' => 'me-4 like-btn user-select-none']) ?>
+                            <!-- Comment Button -->
+                            <?= Html::a('0 <i class="bi bi-chat"></i>', ['postedit', 'img_id' => $images->img_id], ['class' => 'comment-btn user-select-none']) ?>
                         </div>
                     </div>
                 </div>
