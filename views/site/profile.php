@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
             <!-- Bio container -->
-            <div class="container-fluid my-2 rounded-4 shadow bg-black py-4" style="max-width: 45rem; max-height: 15rem">
+            <div class="container-fluid my-2 rounded-4 shadow py-4" style="max-width: 45rem; max-height: 15rem; background-color: var(<?= Html::encode($profile->prof_color) ?>);">
                 <div class="d-flex justify-content-evenly ">
                     <!-- Profile pic -->
                     <img class="border border-white border-3 p-1 rounded-circle" style="width: 8rem; height: 8rem; object-fit: cover;" src="../../<?= Html::encode($profile->prof_img)?>"/>
