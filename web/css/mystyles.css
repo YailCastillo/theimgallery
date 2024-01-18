@@ -1,6 +1,20 @@
 :root {
+    /* Container colors */
     --primary: #212529;
     --secondary: #6c757d;
+
+    /* Button Colors */
+    --like: #4d5eff;
+    --comment: #94ff4d;
+    --delete: #ff4d4d;
+
+    /* Profile Colors */
+    --white: #ffffff;
+    --black: #000000;
+    --default: #000000;
+    --pink: #df9992;
+    --blue: #84b2d1;
+    --yellow: #d8d07d;
 }
 ::-webkit-scrollbar {
     width: .65rem;
@@ -39,7 +53,21 @@
 }
 
 .like-btn:hover {
-    color: #4d5eff;
+    color: var(--like);
+    font-size: 1.5rem;
+}
+
+/* Comment button */
+.comment-btn {
+    text-decoration: none;
+    color: var(--secondary);
+    font-size: 1.2rem;
+    transition: color 0.1s, font-size 0.1s;
+    transition-delay: 0.2s;
+}
+
+.comment-btn:hover {
+    color: var(--comment);
     font-size: 1.5rem;
 }
 
@@ -63,13 +91,6 @@
     width: 100%;
     height: 100%;
     object-fit: fill;
-    transition: width 0.5s, height 0.5s;
-    transition-delay: 0.5s;
-}
-
-.prof-img-size:hover {
-    width: 102%;
-    height: 102%;
 }
 
 /* Back Button */
@@ -86,4 +107,32 @@
     background-color: var(--secondary);
     border: solid 1px var(--secondary);
     color: var(--primary);
+}
+
+/* Profile Button Navbar*/
+.profile-btn-nav {
+    color: #9a9da0;
+    transition: color .2s;
+    transition-delay: .3s;
+}
+
+.profile-btn-nav:hover {
+    color: var(--comment);
+}
+
+/* Logout Button Navbar*/
+.delete-btn-nav {
+    color: #9a9da0;
+    transition: color .2s;
+    transition-delay: .3s;
+}
+
+.delete-btn-nav:hover {
+    color: var(--delete);
+}
+
+.shadow-inner {
+    box-shadow: 0px 0px 7px -1px rgba(0,0,0,0.75) inset;
+    -webkit-box-shadow: 0px 0px 7px -1px rgba(0,0,0,0.75) inset;
+    -moz-box-shadow: 0px 0px 7px -1px rgba(0,0,0,0.75) inset;
 }
