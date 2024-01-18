@@ -13,6 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $date = date("d/m/y");
 $username = (Yii::$app->user->identity->username);
+
 ?>
 <body>
     <!-- Container -->
@@ -51,7 +52,21 @@ $username = (Yii::$app->user->identity->username);
                     <!-- New Profile Pic file input -->
                     <?= $form->field($profile, 'profpic')->label(false)->fileInput(['class' => 'form-control text-white border-secondary bg-dark']) ?>
 
-                    <?= Html::submitButton('Save <i class="bi bi-check" style="font-size: 1.3rem;"></i>', ['class' => 'd-flex align-items-center btn btn-light px-2 py-1']) ?>
+                    <!-- Profile Colors -->
+                    Profile color
+                    <div class="btn-group border border-1 border-secondary rounded-2 bg-dark d-flex justify-content-evenly align-item-center mb-3 pt-2">
+                        <?= $form->field($profile, 'prof_color')->label(false)->radio(['class' => 'form-check-input rounded-3', 'value' => '--white', 'style' => 'width: 3rem; height: 3rem; background-color: var(--white);']) ?>
+                            
+                        <?= $form->field($profile, 'prof_color')->label(false)->radio(['class' => 'form-check-input rounded-3', 'value' => '--black', 'style' => 'width: 3rem; height: 3rem; background-color: var(--black);']) ?>
+                            
+                        <?= $form->field($profile, 'prof_color')->label(false)->radio(['class' => 'form-check-input rounded-3', 'value' => '--pink', 'style' => 'width: 3rem; height: 3rem; background-color: var(--pink);']) ?>
+                            
+                        <?= $form->field($profile, 'prof_color')->label(false)->radio(['class' => 'form-check-input rounded-3', 'value' => '--blue', 'style' => 'width: 3rem; height: 3rem; background-color: var(--blue);']) ?>
+                            
+                        <?= $form->field($profile, 'prof_color')->label(false)->radio(['class' => 'form-check-input rounded-3', 'value' => '--yellow', 'style' => 'width: 3rem; height: 3rem; background-color: var(--yellow);']) ?>
+                    </div>
+
+                    <?= Html::submitButton('Save <i class="bi bi-check" style="font-size: 1.3rem;"></i>', ['class' => 'd-flex align-items-center btn btn-success px-2 py-1']) ?>
 
                     <?php ActiveForm::end(); ?>
                 </div>
