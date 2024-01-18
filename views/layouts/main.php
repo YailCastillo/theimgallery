@@ -59,18 +59,16 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                         <li class="nav-item text-white">
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                                 <li class="">'
-                                    . Html::a('Profile <i class="bi bi-person-fill"></i>', ['profile?prof_id=' . Yii::$app->user->identity->id], ['class' => 'dropdown-item nav-link logout']).
+                                    . Html::a('Profile <i class="bi bi-person-fill"></i>', ['profile?prof_id=' . Yii::$app->user->identity->id], ['class' => 'dropdown-item profile-btn-nav']).
                                 '</li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li class="dropdown-item px-0 py-0">
-                                    <div class="d-flex align-items-center";>'
-                                        . Html::beginForm(['/site/logout'])
-                                        . Html::submitButton('Logout <i class="bi bi-door-open-fill"></i>',
-                                            ['class' => 'nav-link btn btn-link logout']
-                                        )
-                                        . Html::endForm() .
-                                    '</div>
-                                </li>
+                                <li class=" px-0 py-0">'
+                                    . Html::beginForm(['/site/logout'])
+                                    . Html::submitButton('Logout <i class="bi bi-door-open-fill"></i>',
+                                        ['class' => 'dropdown-item delete-btn-nav']
+                                    )
+                                    . Html::endForm() .         
+                                '</li>
                             </ul>
                         </li>
                     </div>'
