@@ -52,7 +52,7 @@ $this->title = $image->img_title;
 
                         <div class="pb-3 d-flex align-items-center">
                             <?= Html::a('<i class="bi bi-hand-thumbs-up"></i> 0', ['postedit', 'img_id' => $image->img_id], ['class' => 'me-2 like-btn']) ?>
-                            <?= Html::a('<i class="bi bi-chat"></i> 0', ['postedit', 'img_id' => $image->img_id], ['class' => 'like-btn']) ?>
+                            <?= Html::a('<i class="bi bi-chat"></i> 0', ['postedit', 'img_id' => $image->img_id], ['class' => 'comment-btn']) ?>
                         </div>
                     </div>
 
