@@ -52,18 +52,18 @@ $username = (Yii::$app->user->identity->username);
                     <!-- New Profile Pic file input -->
                     <?= $form->field($profile, 'profpic')->label(false)->fileInput(['class' => 'form-control text-white border-secondary bg-dark']) ?>
 
+                    <!--, ['class' => 'form-check-input rounded-3', 'value' => '--lightgray', 'style' => 'width: 3rem; height: 3rem; background-color: var(--white);']-->
+
                     <!-- Profile Colors -->
                     Profile color
-                    <div class="btn-group border border-1 border-secondary rounded-2 bg-dark d-flex justify-content-evenly align-item-center mb-3 pt-2">
-                        <?= $form->field($profile, 'prof_color')->label(false)->radio(['class' => 'form-check-input rounded-3', 'value' => '--white', 'style' => 'width: 3rem; height: 3rem; background-color: var(--white);']) ?>
-                            
-                        <?= $form->field($profile, 'prof_color')->label(false)->radio(['class' => 'form-check-input rounded-3', 'value' => '--black', 'style' => 'width: 3rem; height: 3rem; background-color: var(--black);']) ?>
-                            
-                        <?= $form->field($profile, 'prof_color')->label(false)->radio(['class' => 'form-check-input rounded-3', 'value' => '--pink', 'style' => 'width: 3rem; height: 3rem; background-color: var(--pink);']) ?>
-                            
-                        <?= $form->field($profile, 'prof_color')->label(false)->radio(['class' => 'form-check-input rounded-3', 'value' => '--blue', 'style' => 'width: 3rem; height: 3rem; background-color: var(--blue);']) ?>
-                            
-                        <?= $form->field($profile, 'prof_color')->label(false)->radio(['class' => 'form-check-input rounded-3', 'value' => '--yellow', 'style' => 'width: 3rem; height: 3rem; background-color: var(--yellow);']) ?>
+                    <div class="border border-1 border-secondary rounded-2 bg-dark d-flex justify-content-evenly align-item-center mb-3 pt-3">
+                        <?= $form->field($profile, 'prof_color')->label(false)->radioList([
+                            '--lgray' => '<div class="ms-1 rounded-3 shadow-inner d-flex" style="width: 3rem; height: 3rem; background-color: var(--lgray);"></div>',
+                            '--black' => '<div class="ms-1 rounded-3 shadow-inner" style="width: 3rem; height: 3rem; background-color: var(--black);"></div>',
+                            '--pink' => '<div class="ms-1 rounded-3 shadow-inner" style="width: 3rem; height: 3rem; background-color: var(--pink);"></div>',
+                            '--blue' => '<div class="ms-1 rounded-3 shadow-inner" style="width: 3rem; height: 3rem; background-color: var(--blue);"></div>',
+                            '--yellow' => '<div class="ms-1 pe-1 rounded-3 shadow-inner" style="width: 3rem; height: 3rem; background-color: var(--yellow);"></div>',
+                        ], ['tag' => 'array', 'encode' => false, 'class' => 'd-flex flex-row', 'style' => 'width: 100%;', 'itemOptions' => ['class' => 'form-check-input']]) ?>
                     </div>
 
                     <?= Html::submitButton('Save <i class="bi bi-check" style="font-size: 1.3rem;"></i>', ['class' => 'd-flex align-items-center btn btn-success px-2 py-1']) ?>
