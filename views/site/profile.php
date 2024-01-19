@@ -30,16 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <div class="position-relative d-flex flex-column text-white" style="width: 20rem;">
                         <!-- Post Counter -->
-                        <div class="">
+                        <div class="" style="color: var(<?= Html::encode($profile->prof_fontcolor) ?>);">
                             <h6 class="m-0">Posts</h6>
                             <?= Html::tag('div', count($image), ['class' => 'mx-auto']) ?>
                         </div>
                         <!-- Username -->
-                        <div class="fw-bold">
+                        <div class="fw-bold" style="color: var(<?= Html::encode($profile->prof_fontcolor) ?>);">
                             <?= Html::encode($user->username) ?>
                         </div>
                         <!-- Biography -->
-                        <div class="text-break">
+                        <div class="text-break" style="color: var(<?= Html::encode($profile->prof_fontcolor) ?>);">
                             <?= Html::encode($profile->prof_bio) ?>
                         </div>
 
