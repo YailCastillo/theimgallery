@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
             <!-- User images container -->
-            <div class="container my-2 py-3 px-4 rounded-4 shadow bg-black" style="max-width: 40rem; max-height: auto">
+            <div class="container my-2 py-3 px-4 rounded-4 shadow" style="max-width: 40rem; max-height: auto; background-color: var(<?= Html::encode($profile->prof_color) ?>);">
 
                 <!-- Images grid -->
                 <div class="container gx-1 gy-1">
