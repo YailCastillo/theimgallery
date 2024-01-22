@@ -56,17 +56,17 @@ $username = (Yii::$app->user->identity->username);
 
                     <!-- Profile Colors -->
                     Profile color
-                    <div class="border border-1 border-secondary rounded-2 bg-dark d-flex justify-content-evenly align-item-center mb-3 pt-3">
-                        <?= $form->field($profile, 'prof_color')->label(false)->radioList([
-                            '--lgray' => '<div class="ms-1 rounded-3 shadow-inner d-flex" style="width: 3rem; height: 3rem; background-color: var(--lgray);"></div>',
-                            '--black' => '<div class="ms-1 rounded-3 shadow-inner" style="width: 3rem; height: 3rem; background-color: var(--black);"></div>',
-                            '--pink' => '<div class="ms-1 rounded-3 shadow-inner" style="width: 3rem; height: 3rem; background-color: var(--pink);"></div>',
-                            '--blue' => '<div class="ms-1 rounded-3 shadow-inner" style="width: 3rem; height: 3rem; background-color: var(--blue);"></div>',
-                            '--yellow' => '<div class="ms-1 pe-1 rounded-3 shadow-inner" style="width: 3rem; height: 3rem; background-color: var(--yellow);"></div>',
-                        ], ['tag' => 'array', 'encode' => false, 'class' => 'd-flex flex-row', 'style' => 'width: 100%;', 'itemOptions' => ['class' => 'form-check-input']]) ?>
+                    <div class="border border-1 border-secondary rounded-2 bg-dark d-flex justify-content-evenly align-item-center">
+                        <?= $form->field($profile, 'prof_color', ['options' => ['class' => 'my-3']])->label(false)->radioList([
+                            '--lgray' => '<div class="me-2 rounded-3 shadow-inner d-flex" style="width: 3rem; height: 3rem; background-color: var(--lgray);"></div>',
+                            '--black' => '<div class="me-2 rounded-3 shadow-inner" style="width: 3rem; height: 3rem; background-color: var(--black);"></div>',
+                            '--pink' => '<div class="me-2 rounded-3 shadow-inner" style="width: 3rem; height: 3rem; background-color: var(--pink);"></div>',
+                            '--blue' => '<div class="me-2 rounded-3 shadow-inner" style="width: 3rem; height: 3rem; background-color: var(--blue);"></div>',
+                            '--yellow' => '<div class="me-2 pe-1 rounded-3 shadow-inner" style="width: 3rem; height: 3rem; background-color: var(--yellow);"></div>',
+                        ], ['tag' => 'array', 'encode' => false, 'separator' => '<div class="mx-2"></div>','class' => 'd-flex flex-row align-items-center', 'style' => 'width: 100%;', 'itemOptions' => ['class' => 'form-check-input mt-3']]) ?>
                     </div>
 
-                    <?= Html::submitButton('Save <i class="bi bi-check" style="font-size: 1.3rem;"></i>', ['class' => 'd-flex align-items-center btn btn-success px-2 py-1']) ?>
+                    <?= Html::submitButton('Save <i class="bi bi-check" style="font-size: 1.3rem;"></i>', ['class' => 'd-flex align-items-center btn btn-success px-2 py-1 mt-3']) ?>
 
                     <?php ActiveForm::end(); ?>
                 </div>
